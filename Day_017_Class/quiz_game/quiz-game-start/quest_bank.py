@@ -5,7 +5,7 @@ question_bank = []  # a list containing question objects , which in turn contain
 
 for q in question_data:
     quest = q["question"]
-    ans = q["correct_answers"]
+    ans = q["correct_answer"]
 
     # creating question object for every iteration and appending to the question bank list
     new_question = Question(quest, ans)
