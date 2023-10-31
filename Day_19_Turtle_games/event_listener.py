@@ -4,6 +4,7 @@ screen = Screen()
 tim1 = Turtle()
 tim1.shape("turtle")
 tim1.color("orange")
+tim1.pen()
 
 tim2 = Turtle()
 tim2.shape("turtle")
@@ -31,7 +32,7 @@ def move_back():
 # =======================================================================
 # For second turtle
 def move_fwdd():
-    tim2.forward(10)
+    tim2.forward(15)
 
 
 # turn Right
@@ -46,7 +47,7 @@ def turn_leftt():
 
 # Move Backwards
 def move_backk():
-    tim2.back(10)
+    tim2.back(15)
 
 
 
