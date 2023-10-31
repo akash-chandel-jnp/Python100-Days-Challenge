@@ -5,15 +5,6 @@ screen = Screen()
 screen.setup(width=500, height=400)
 
 
-#compulsarily taking user bet
-user_bet = False
-isRaceOn = False
-while not user_bet:
-    user_bet = screen.textinput("Make Your Bet", "Which color turtle will win ? ").lower()
-    if user_bet:
-        isRaceOn = True
-    else:
-        isRaceOn = False
 
 # print(user_bet)
 colors = ["red", "green", "yellow", "orange", "purple", "blue"]
@@ -29,6 +20,16 @@ for i in range(0, 6):
     y += 30
     all_turtles.append(tim)
 
+
+#compulsarily taking user bet
+user_bet = False
+isRaceOn = False
+while not user_bet:
+    user_bet = screen.textinput("Make Your Bet", "Which color turtle will win ? ").lower()
+    if user_bet:
+        isRaceOn = True
+    else:
+        isRaceOn = False
 
 while isRaceOn:
     for tim in all_turtles:
