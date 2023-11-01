@@ -1,3 +1,4 @@
+import random
 from turtle import Turtle, Screen
 
 # from screen_listener import head_east, head_west, head_north, head_south
@@ -28,7 +29,18 @@ print(positions_of_all_turtles)
 
 all_turtles[0].shape("circle")
 
+def createFoodItem():   
+    food_position  = (random.randint(-280,+280), random.randint(-280,+280))
 
+    food = Turtle(shape="triangle")
+    food.color("red")
+    food.penup()
+    food.hideturtle()
+    food.setposition(food_position)
+    food.showturtle()
+
+
+createFoodItem()
 def follow_head(all_turtles_list):
     for i in range(1, len(all_turtles_list)):
         current_turt = all_turtles_list[i]
@@ -37,11 +49,17 @@ def follow_head(all_turtles_list):
         positions_of_all_turtles[i - 1] = prev_turt.pos()
 
 
+isGameStillOn = True
+
+def keepMoving(all_turtles_list):
+    while isGameStillOn : # for continuous movemnet of the snake
+        all_turtles_list[0].forward(5)
+        follow_head(all_turtles_list)
+
 def head_east(all_turtles_list):
     all_turtles_list[0].setheading(0)
-    all_turtles_list[0].forward(10)
+    keepMoving(all_turtles_list)
 
-    follow_head(all_turtles_list)
 
     # for i in range(1,len(all_turtles_list)+1):
     #     current_turt= all_turtles_list[i]
