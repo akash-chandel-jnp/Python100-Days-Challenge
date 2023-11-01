@@ -15,7 +15,7 @@ positions_of_all_turtles = []
 initial_x = 0
 initial_y = 0
 all_turtles = []
-for i in range(3):
+for i in range(4):
     tur = Turtle(shape="square")
     tur.color("white")
     tur.penup()
@@ -30,7 +30,7 @@ all_turtles[0].shape("circle")
 
 
 def follow_head(all_turtles_list):
-    for i in range(1, len(all_turtles_list) + 1):
+    for i in range(1, len(all_turtles_list)):
         current_turt = all_turtles_list[i]
         prev_turt = all_turtles_list[i - 1]
         current_turt.setposition(positions_of_all_turtles[i - 1])
