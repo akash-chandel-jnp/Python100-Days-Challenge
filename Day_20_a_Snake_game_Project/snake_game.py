@@ -19,6 +19,7 @@ all_turtles = []
 for i in range(4):
     tur = Turtle(shape="square")
     tur.color("white")
+    tur.turtlesize(.5)
     tur.penup()
     tur.setposition(initial_x, initial_y)
     all_turtles.append(tur)
@@ -29,10 +30,16 @@ print(positions_of_all_turtles)
 
 all_turtles[0].shape("circle")
 
-def createFoodItem():   
-    food_position  = (random.randint(-280,+280), random.randint(-280,+280))
+# Creating food item and tracking its position
+food_position = ()
 
-    food = Turtle(shape="triangle")
+
+def createFoodItem():
+    global food_position
+    food_position = (random.randrange(-280, +280, 5), random.randrange(-280, +280,5))
+
+    food = Turtle(shape="square")
+    food.turtlesize(.5)
     food.color("red")
     food.penup()
     food.hideturtle()
@@ -41,6 +48,11 @@ def createFoodItem():
 
 
 createFoodItem()
+print(food_position)
+
+
+
+# Follow the head while its moving
 def follow_head(all_turtles_list):
     for i in range(1, len(all_turtles_list)):
         current_turt = all_turtles_list[i]
@@ -51,39 +63,48 @@ def follow_head(all_turtles_list):
 
 isGameStillOn = True
 
-def keepMoving(all_turtles_list):
-    while isGameStillOn : # for continuous movemnet of the snake
+
+# check whether eaten food or not
+def food_eaten(all_turtles_list, food_position):
+    head_turtle = all_turtles_list[0]
+    if head_turtle.pos() == food_position:
+        # grow the tail by one
+        new_tail = Turtle()
+        all_turtles.append(new_tail)
+
+
+def keepMoving(all_turtles_list, food_position):
+    while isGameStillOn:  # for continuous movemnet of the snake
         all_turtles_list[0].forward(5)
+        food_eaten(all_turtles_list, food_position )
         follow_head(all_turtles_list)
+
 
 def head_east(all_turtles_list):
     all_turtles_list[0].setheading(0)
-    keepMoving(all_turtles_list)
 
-
-    # for i in range(1,len(all_turtles_list)+1):
-    #     current_turt= all_turtles_list[i]
-    #     prev_turt = all_turtles_list[i-1]
-    #     current_turt.setposition(positions_of_all_turtles[i-1])
-    #     positions_of_all_turtles[i-1] = prev_turt.pos()
+    keepMoving(all_turtles_list,food_position)
 
 
 def head_north(all_turtles_list):
     all_turtles_list[0].setheading(90)
-    all_turtles_list[0].forward(10)
-    follow_head(all_turtles_list)
+    # all_turtles_list[0].forward(10)
+    # follow_head(all_turtles_list)
+    keepMoving(all_turtles_list,food_position)
 
 
 def head_west(all_turtles_list):
     all_turtles_list[0].setheading(180)
-    all_turtles_list[0].forward(10)
-    follow_head(all_turtles_list)
+    # all_turtles_list[0].forward(10)
+    # follow_head(all_turtles_list)
+    keepMoving(all_turtles_list,food_position)
 
 
 def head_south(all_turtles_list):
     all_turtles_list[0].setheading(270)
-    all_turtles_list[0].forward(10)
-    follow_head(all_turtles_list)
+    # all_turtles_list[0].forward(10)
+    # follow_head(all_turtles_list)
+    keepMoving(all_turtles_list, food_position)
 
 
 screen.onkey(lambda: head_west(all_turtles), "Left")
