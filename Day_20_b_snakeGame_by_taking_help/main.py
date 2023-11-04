@@ -34,6 +34,7 @@ while game_is_on:
     if snk.head.distance(food_item) < 17:
         print("eaten food")
         food_item.refresh_food()
+        snk.extent_snake()
         score_board1.increase_score()
 
     if snk.head.xcor() > 280 or snk.head.xcor() < -280 or snk.head.ycor() > 280 or snk.head.ycor() <-280 :
