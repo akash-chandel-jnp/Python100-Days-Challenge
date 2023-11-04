@@ -28,7 +28,7 @@ screen.onkey(snk.right, "Right")
 game_is_on = True
 while game_is_on:
     screen.update()
-    time.sleep(.1)
+    time.sleep(.1)  # can also be used to change the speed
     snk.move()
 
     if snk.head.distance(food_item) < 17:
