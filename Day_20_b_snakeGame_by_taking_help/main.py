@@ -37,8 +37,18 @@ while game_is_on:
         snk.extent_snake()
         score_board1.increase_score()
 
-    if snk.head.xcor() > 280 or snk.head.xcor() < -280 or snk.head.ycor() > 280 or snk.head.ycor() <-280 :
+    # TODO : Detect collision with the wall
+    if snk.head.xcor() > 280 or snk.head.xcor() < -300 or snk.head.ycor() > 300 or snk.head.ycor() <-280 :
         game_is_on = False
         score_board1.game_over_msg()
+
+    # TODO : Detecting collision of head with the tail
+    for segment in snk.segments:
+        if segment == snk.head:
+            pass
+        elif snk.head.distance(segment) < 10:
+            game_is_on = False
+            score_board1.game_over_msg()
+            score_board1.game_over_msg()
 
 screen.exitonclick()
