@@ -36,4 +36,8 @@ while game_is_on:
         food_item.refresh_food()
         score_board1.increase_score()
 
+    if snk.head.xcor() > 280 or snk.head.xcor() < -280 or snk.head.ycor() > 280 or snk.head.ycor() <-280 :
+        game_is_on = False
+        score_board1.game_over_msg()
+
 screen.exitonclick()
