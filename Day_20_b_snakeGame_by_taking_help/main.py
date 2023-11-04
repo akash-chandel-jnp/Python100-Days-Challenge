@@ -43,10 +43,10 @@ while game_is_on:
         score_board1.game_over_msg()
 
     # TODO : Detecting collision of head with the tail
-    for segment in snk.segments:
-        if segment == snk.head:
-            pass
-        elif snk.head.distance(segment) < 10:
+    for segment in snk.segments[1:]:
+        # if segment == snk.head:
+        #     pass
+        if snk.head.distance(segment) < 10:
             game_is_on = False
             score_board1.game_over_msg()
             score_board1.game_over_msg()
