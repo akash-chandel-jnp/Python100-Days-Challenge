@@ -29,8 +29,14 @@ ball1 = ball.Ball()
 # Keep the game running
 game_is_on = True
 while game_is_on:
-    time.sleep(.1)
+    time.sleep(.05)
     screen.update()
     ball1.move()
+
+    # detect a collision with the upper or lower wall
+    if ball1.ycor() > 280 or ball1.ycor() <-280:
+        # Bounce the ball
+        ball1.bounce()
+
 
 screen.exitonclick()
