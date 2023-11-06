@@ -2,6 +2,8 @@ import time
 from turtle import Screen
 from paddle import Paddle
 import ball
+from scoreboard import Scoreboard
+
 
 screen = Screen()
 screen.bgcolor("black")
@@ -12,9 +14,13 @@ screen.tracer(0)
 
 screen.listen()
 
-# paddle creation
+# initialization of all the components
 r_paddle = Paddle((+350, 0))  # this is how to pass arguments to a class
 l_paddle = Paddle((-350, 0))
+ball1 = ball.Ball()
+scoreboard = Scoreboard()
+
+
 
 # Paddle movements controls
 screen.onkeypress(r_paddle.up, "Up")
@@ -24,7 +30,6 @@ screen.onkeypress(l_paddle.up, "w")
 screen.onkeypress(l_paddle.down, "s")
 
 # ball related codes
-ball1 = ball.Ball()
 
 # Keep the game running
 game_is_on = True
@@ -42,6 +47,18 @@ while game_is_on:
     if ball1.distance(r_paddle) < 50 and ball1.xcor() > 320  or ball1.distance(l_paddle) < 50 and ball1.xcor() < -320:
      # Bounce from paddle
         ball1.bounce_from_paddle()
+
+    #r_paddle misses the ball :
+    if ball1.xcor() > 380 :
+        ball1.reset_position()
+        scoreboard.l_point()
+
+    #l_paddle misses the ball :
+    if ball1.xcor() < -380 :
+        ball1.reset_position()
+        scoreboard.r_point()
+
+
 
 
 

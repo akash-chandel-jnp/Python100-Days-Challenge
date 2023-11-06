@@ -30,6 +30,9 @@ class Ball(Turtle):
         self.x_move *= -1    # for bounce from the paddle simply change the x_cord imcrement from +10 to -10
 
 
+    def reset_position(self):
+        self.goto(0,0)
+        self.bounce_from_paddle()
 
 
 
