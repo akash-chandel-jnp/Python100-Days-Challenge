@@ -3,7 +3,7 @@ from turtle import Screen
 from paddle import Paddle
 import ball
 from scoreboard import Scoreboard
-
+TIME_LAPSE = .1
 
 screen = Screen()
 screen.bgcolor("black")
@@ -34,7 +34,7 @@ screen.onkeypress(l_paddle.down, "s")
 # Keep the game running
 game_is_on = True
 while game_is_on:
-    time.sleep(.05)
+    time.sleep(TIME_LAPSE)
     screen.update()
     ball1.move()
 
@@ -47,16 +47,20 @@ while game_is_on:
     if ball1.distance(r_paddle) < 50 and ball1.xcor() > 320  or ball1.distance(l_paddle) < 50 and ball1.xcor() < -320:
      # Bounce from paddle
         ball1.bounce_from_paddle()
+        TIME_LAPSE *= 0.9
 
     #r_paddle misses the ball :
     if ball1.xcor() > 380 :
         ball1.reset_position()
         scoreboard.l_point()
+        TIME_LAPSE =0.1
 
     #l_paddle misses the ball :
     if ball1.xcor() < -380 :
         ball1.reset_position()
         scoreboard.r_point()
+        TIME_LAPSE =0.1
+
 
 
 
