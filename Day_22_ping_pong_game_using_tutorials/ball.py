@@ -23,8 +23,11 @@ class Ball(Turtle):
         self.goto(new_x, new_y)
 
 
-    def bounce(self):
+    def bounce_from_wall(self):
         self.y_move *= -1
+
+    def bounce_from_paddle(self):
+        self.x_move *= -1    # for bounce from the paddle simply change the x_cord imcrement from +10 to -10
 
 
 
