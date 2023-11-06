@@ -7,6 +7,7 @@ screen.bgcolor("black")
 screen.tracer(0)
 
 slider1 = Slider()
+slider1.create_body(side= "left")
 
 game_is_on = True
 

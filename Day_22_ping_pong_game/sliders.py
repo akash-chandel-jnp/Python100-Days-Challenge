@@ -15,13 +15,18 @@ class Slider:
 
 
     # TODO create body by creating new_segement (which is a turtle) and in appending it to the segment list and then repeat the same steps for n times to increase the length of the slider
-    def create_body(self):
+    def create_body(self,side):
+        if side == "left":
+            x_cor = -870
+        elif side == "right":
+            x_cor = +870
+
         uppermost_position = STARTING_POSITION_OF_FIRST_SEGMENT
         for i in range(SLIDER_LENGTH):
             new_segment = Turtle(shape="square")
             new_segment.penup()
             new_segment.color("white")
-            new_segment.goto(870, uppermost_position)
+            new_segment.goto(x_cor, uppermost_position)
             self.segment.append(new_segment)
             uppermost_position -= 20
         print("body complete")
