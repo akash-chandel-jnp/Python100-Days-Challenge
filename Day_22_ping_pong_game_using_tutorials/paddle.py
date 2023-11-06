@@ -2,7 +2,7 @@ from turtle import Turtle
 
 
 class Paddle(Turtle):
-    def __init__(self, position):
+    def __init__(self, position): # this is how we pass arguments to the class
         super().__init__()
 
         self.penup()
