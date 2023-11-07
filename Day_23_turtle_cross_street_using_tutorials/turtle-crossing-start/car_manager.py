@@ -15,13 +15,15 @@ class CarManager():
         self.all_cars = []
 
     def create_car(self):
-        new_car = Turtle("square")
-        new_car.shapesize(stretch_wid=1, stretch_len=2)
-        new_car.penup()
-        new_car.color(random.choice(COLORS))
-        random_y = random.randint(-250, 250)
-        new_car.goto(300, random_y)
-        self.all_cars.append(new_car)
+        #we want decrease the rate at which cars are generated so use probabily of getting 1 out out 6 random number. and only if random no. is 1 only then  create car , we can also use this trick in the while loop where the creating car function is called
+        if random.randint(1,6) == 1 :
+            new_car = Turtle("square")
+            new_car.shapesize(stretch_wid=1, stretch_len=2)
+            new_car.penup()
+            new_car.color(random.choice(COLORS))
+            random_y = random.randint(-250, 250)
+            new_car.goto(300, random_y)
+            self.all_cars.append(new_car)
 
     def move_cars(self):
         for car in self.all_cars:
