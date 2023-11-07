@@ -4,7 +4,7 @@ from turtle import Turtle
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 
 STARTING_MOVE_DISTANCE = 5
-MOVE_INCREMENT = 10
+MOVE_INCREMENT = 3
 
 
 # y_coordinate_of_previous_car = 280
@@ -13,10 +13,11 @@ MOVE_INCREMENT = 10
 class CarManager():
     def __init__(self):
         self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
     def create_car(self):
-        #we want decrease the rate at which cars are generated so use probabily of getting 1 out out 6 random number. and only if random no. is 1 only then  create car , we can also use this trick in the while loop where the creating car function is called
-        if random.randint(1,6) == 1 :
+        # we want decrease the rate at which cars are generated so use probabily of getting 1 out out 6 random number. and only if random no. is 1 only then  create car , we can also use this trick in the while loop where the creating car function is called
+        if random.randint(1, 6) == 1:
             new_car = Turtle("square")
             new_car.shapesize(stretch_wid=1, stretch_len=2)
             new_car.penup()
@@ -27,4 +28,7 @@ class CarManager():
 
     def move_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
+
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
