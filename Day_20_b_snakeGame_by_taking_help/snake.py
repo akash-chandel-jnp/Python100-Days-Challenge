@@ -14,7 +14,7 @@ class Snake:
         self.segments = []
         self.create_body()
         self.head = self.segments[0]
-        self.body_length = len(self.segments)
+        # self.body_length = len(self.segments)
 
     def create_body(self):
         for position in STARTING_POSITIONS:
@@ -26,6 +26,14 @@ class Snake:
         new_segment.penup()
         new_segment.setposition(position)
         self.segments.append(new_segment)
+
+    def reset(self):
+        for segment in self.segments:
+            segment.goto(1000,1000)
+        self.segments.clear()
+        self.create_body()
+        self.head = self.segments[0]
+
 
     def extent_snake(self):
         self.add_segment(self.segments[-1].position())
