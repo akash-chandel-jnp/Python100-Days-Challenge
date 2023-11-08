@@ -1,0 +1,2 @@
+this is the new text to be added by deleting the previous
+this is the text to be append only without deleting
