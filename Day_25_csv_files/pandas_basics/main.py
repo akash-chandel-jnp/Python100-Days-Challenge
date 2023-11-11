@@ -39,7 +39,7 @@
 import pandas
 
 data = pandas.read_csv('weather_data.csv')  # this is a dataframe
-# print(data)
+print(data)
 
 # print(data.to_dict())
 # print(data.dtypes)
@@ -49,39 +49,52 @@ data = pandas.read_csv('weather_data.csv')  # this is a dataframe
 
 # How to get hold of any column (series) in panda:
 # step 1: first create a data frame of the given data using -->  pandas.read_csv('file_path) --> then save it under a variable name
-data1 = pandas.read_csv('weather_data.csv')
-# step 2: use 'column name inside square brackets  after df name to access columns:
-# print(data1['day'])
-print(data1.day)  # This also works as df creates attributes of the first rows names
+# data1 = pandas.read_csv('weather_data.csv')
+# # step 2: use 'column name inside square brackets  after df name to access columns:
+# # print(data1['day'])
+# print(data1.day)  # This also works as df creates attributes of the first rows names
 
-print(type(data['temp']))  # data['temp'] is a series
+# print(type(data['temp']))  # data['temp'] is a series
 
-temp_list = data['temp'].to_list()  # converts a series(a column) into a actual list
-print(temp_list)
+# temp_list = data['temp'].to_list()  # converts a series(a column) into a actual list
+# print(temp_list)
 
 # chanllenge : Find the average temp of all the temperatures
 # method 1: using python sum function
-temp_sum = sum(temp_list)
-avg_temp = round(temp_sum / len(temp_list), 2)
-print(avg_temp)
+# temp_sum = sum(temp_list)
+# avg_temp = round(temp_sum / len(temp_list), 2)
+# print(avg_temp)
 
 # Using panda mean function:
-temp_mean = data[
-    'temp'].mean()  # first get access to the column whose means is to be found, then use mean() function in pandas.
-print(temp_mean)
+# temp_mean = data[
+#     'temp'].mean()  # first get access to the column whose means is to be found, then use mean() function in pandas.
+# print(temp_mean)
 
 # Challenge : Find the max temp using pandas function
 # step 1 get hold of the series and then on it apply the required function:
-temp_max = data['temp'].max()
-print(temp_max)
+# temp_max = data['temp'].max()
+# print(temp_max)
 
 # How to get Row of data : df[condition for row] -> example : print the row for which day is Monday : print(data[data.day == 'Monday'])
-print("\nRow having day as 'Monday")
-print(data[data.day == 'Monday'])
+# print("\nRow having day as 'Monday")
+# print(data[data.day == 'Monday'])
 
 # Challenge : Print the row to which has the highest temp :
 # 1) find the highest temp
-max_temp = data['temp'].max()
+# max_temp = data['temp'].max()
 # 2)  use this to get the row having temp as max_temp
-print("\nRow having max Temp is : ")
-print(data[data.temp == max_temp])
+# print("\nRow having max Temp is : ")
+# print(data[data.temp == max_temp])
+
+# Challenge : Get temp of Monday but convert it into Celsius :
+# mon_row = data[data.day == 'Monday']    # This will give us  row for which day = monday
+# print("mondays Temp")
+# print(mon_row.temp)                     # this will only give the temp value from the above row obtained
+
+# we can simply do the above thing in one as follows:
+# mon_temp_in_celsius = data[data.day == 'Monday'].temp
+# mon_temp_in_celsius_value_only = mon_temp_in_celsius[0] # this only gives the value not its index also 
+# mon_temp_in_fahrenheit = (mon_temp_in_celsius_value_only*9/5) + 32
+# print(mon_temp_in_fahrenheit)
+
+
