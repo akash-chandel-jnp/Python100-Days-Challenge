@@ -22,4 +22,4 @@ print(dict_colors)
 # convert it into a csv : for that first need to convert to a dataframe only then can use to_csv method to convert to csv
 dict_color_df = pandas.DataFrame(dict_colors, index = [0])  # converted to dataframe
 print(dict_color_df)
-# dict_color_df.to_csv('./dict_color.csv')       # converted df to csv
+dict_color_df_csv = dict_color_df.to_csv('./dict_color.csv')       # converted df to csv

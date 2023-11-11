@@ -5,6 +5,7 @@ colours = ["red", "green" , "orange", "blue", "purple", "pink"]
 class Car(Turtle):
     def __init__(self,position):
         super().__init__()
+
         self.penup()
         self.setheading(270)
         self.goto(position)
