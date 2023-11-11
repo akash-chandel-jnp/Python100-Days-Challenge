@@ -8,4 +8,9 @@ screen.addshape(image)
 turtle.shape(image)
 
 
-screen.exitonclick()
+
+
+
+# Managing screen to not exit when clicked on screen
+turtle.mainloop() # this is an alternative to exitonclick function --> this does not exitonclick -> and we need this as we have to click on the screen to know its coordinates
+# screen.exitonclick()
