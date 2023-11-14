@@ -8,8 +8,15 @@ screen.addshape(image)
 turtle.shape(image)
 
 
+# At the bottom of the map , inform user that to exit the game he can type 'Exit' : then while loop will break and screen will exit automatically
+exit_msg = Turtle()
+exit_msg.hideturtle()
+exit_msg.penup()
+exit_msg.goto(0, -300)
+exit_msg.write("Type 'Exit' to exit the game.", font=('Arial', 16, 'normal'))
 
-user_guess = screen.textinput("Guess state name" , "Guess the name of the State in US")
+
+
 
 
 # Convert the csv of the states names into a dataframe
@@ -17,17 +24,45 @@ import pandas as pd
 data = pd.read_csv('./50_states.csv')
 print(data)
 
+state_list = data.state.to_list()
+print(state_list)
+states_guessed_correctly = []
 
 
-for i in range(len(data)):
-    if user_guess == data.state[i]:
-        details = (i , data.x[i] , data.y[i])
+# Create a while loop so to repeatedly ask user for the guess until all the states have been guessed or he answered wrong
+
+while len(states_guessed_correctly) < len(data):
+    user_guess = screen.textinput(f"{len(states_guessed_correctly)} / {len(data)} of the states Guessed", "Guess the name of the State in US")
+    user_guess = user_guess.title()
+    # for i in range(len(data)):
+    if user_guess == 'Exit':
+        break
+
+    elif user_guess in states_guessed_correctly:
+        pass
+
+    elif user_guess in state_list:
+        states_guessed_correctly.append(user_guess)
+
+        #print state name at the correct location
         t = Turtle()
         t.hideturtle()
         t.penup()
-        t.goto((details[1], details[2]))
+        correct_state_row = data[data.state == user_guess]
+        x_cord = int(correct_state_row.x)
+        y_cord = int(correct_state_row.y)
+        t.goto((x_cord, y_cord))
         t.write(f"{user_guess}")
-    # print(data.state)
+        # print(states_guessed_correctly)
+
+
+
+# screen.mainloop()
+
+
+
+    #     details = (i , data.x[i] , data.y[i])
+    # # print(data.state)
 
 
 
@@ -41,5 +76,5 @@ for i in range(len(data)):
 # turtle.onscreenclick(get_mouse_click_coor)
 
 # Managing screen to not exit when clicked on screen
-turtle.mainloop()  # this is an alternative to exitonclick function --> this does not exitonclick -> and we need this as we have to click on the screen to know its coordinates
+# screen.mainloop()  # this is an alternative to exitonclick function --> this does not exitonclick -> and we need this as we have to click on the screen to know its coordinates
 # screen.exitonclick()
