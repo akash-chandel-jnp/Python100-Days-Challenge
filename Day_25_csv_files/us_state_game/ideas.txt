@@ -1,0 +1,3 @@
+using the same concept we can make many more game:
+like
+1) guess the names of all the plants images shown
