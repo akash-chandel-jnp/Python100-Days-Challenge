@@ -1,6 +1,8 @@
 import turtle
 from turtle import Turtle, Screen
 
+import pandas
+
 screen = Screen()
 screen.title("U.S. States Game")
 image = 'blank_states_img.gif'
@@ -24,8 +26,8 @@ import pandas as pd
 data = pd.read_csv('./50_states.csv')
 print(data)
 
-state_list = data.state.to_list()
-print(state_list)
+all_state_list = data.state.to_list()
+print(all_state_list)
 states_guessed_correctly = []
 
 
@@ -36,12 +38,19 @@ while len(states_guessed_correctly) < len(data):
     user_guess = user_guess.title()
     # for i in range(len(data)):
     if user_guess == 'Exit':
+        #create a csv file for the list of the states not answered
+        remaining_states = []
+        for state_name in all_state_list:
+            if state_name not in states_guessed_correctly:
+                remaining_states.append(state_name)
+        #create csv from the list
+        pandas.DataFrame(remaining_states).to_csv("./remaining_states.csv")
         break
 
     elif user_guess in states_guessed_correctly:
         pass
 
-    elif user_guess in state_list:
+    elif user_guess in all_state_list:
         states_guessed_correctly.append(user_guess)
 
         #print state name at the correct location
