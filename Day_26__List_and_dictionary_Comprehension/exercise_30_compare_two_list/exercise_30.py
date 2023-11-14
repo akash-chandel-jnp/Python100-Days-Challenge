@@ -35,15 +35,15 @@ Remember you can use the int() method in python to convert a string into an inte
 
 with open("file1.txt") as file1:
     list1 = file1.readlines()
-    new_list1 = [int(num.replace('\n', '')) for num in list1]
-    print(new_list1)
+    # new_list1 = [int(num.replace('\n', '')) for num in list1]
+    # print(new_list1)
 
 with open("file2.txt") as file2:
     list2 = file2.readlines()
-    new_list2 = [int(num.replace('\n', '')) for num in list2]
-    print(new_list2)
+    # new_list2 = [int(num.replace('\n', '')) for num in list2]
+    # print(new_list2)
 
-result = [num for num in new_list1 if num in new_list2]   # ie take num from list1 only if it is in list2 also
+result = [int(num) for num in list1 if num in list2]   # ie take num from list1 only if it is in list2 also
 print(result)
 
 # Write your code above 👆
