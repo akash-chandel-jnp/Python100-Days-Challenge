@@ -1,6 +1,6 @@
 # TODO create a list of all the line(name)
 with open('./Input/Names/invited_names.txt') as name_file:
-    list_of_names = name_file.readlines()
+    list_of_names = name_file.readlines()  # readlines() returns the list of all the lines
 
 # Get the content of the sample letter content
 with open('./Input/Letters/starting_letter.txt') as start_letter:
