@@ -39,10 +39,14 @@ while len(states_guessed_correctly) < len(data):
     # for i in range(len(data)):
     if user_guess == 'Exit':
         #create a csv file for the list of the states not answered
-        remaining_states = []
-        for state_name in all_state_list:
-            if state_name not in states_guessed_correctly:
-                remaining_states.append(state_name)
+        # remaining_states = []
+        # for state_name in all_state_list:
+        #     if state_name not in states_guessed_correctly:
+        #         remaining_states.append(state_name)
+
+        #using list comprehension method
+        remaining_states =[state for state in all_state_list if state not in states_guessed_correctly]
+
         #create csv from the list
         pandas.DataFrame(remaining_states).to_csv("./remaining_states.csv")
         break
